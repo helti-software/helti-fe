@@ -6,6 +6,7 @@ module.exports = {
     './components/**/*.{ts,tsx}',
     './app/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
+    './@/**/*.{ts,tsx}'
 	],
   theme: {
     container: {
@@ -25,6 +26,9 @@ module.exports = {
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
+        },
+        silver: {
+          DEFAULT: "hsl(var(--silver))"
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
