@@ -1,6 +1,6 @@
 const withNextIntl = require('next-intl/plugin')('./i18n.ts')
 
-const nextConfig = {
+module.exports = withNextIntl({
   reactStrictMode: true,
   swcMinify: true,
   images: {
@@ -15,6 +15,4 @@ const nextConfig = {
       }
     ]
   }
-}
-
-module.exports = withNextIntl({ nextConfig })
+})

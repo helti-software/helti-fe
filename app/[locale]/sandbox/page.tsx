@@ -15,10 +15,32 @@ import Spinner from '@/components/Spinner'
 
 export default function Home() {
   return (
-    <div className="bg-red-400">
-      <p className="text-2xl text-black">Card</p>
-      <div className="animate-fade-up my-10 grid w-full max-w-screen-xl grid-cols-1 gap-5 px-5 md:grid-cols-3 xl:px-0">
-        {features.map(({ title, description, demo, large }) => (
+    <div>
+      <div className="bg-yellow-700/40 shadow-md p-6">
+        <p className="text-center text-2xl text-black">Buttons</p>
+        <div className="animate-fade-up my-10 grid w-full max-w-screen-xl grid-cols-1 gap-5 px-5 md:grid-cols-3 xl:px-0">
+          <Button variant="outline">Button</Button>
+          <Button variant="secondary">Secondary</Button>
+          <Button variant="destructive">Destructive</Button>
+          <Button variant="outline">Outline</Button>
+          <Button variant="ghost">Ghost</Button>
+          <Button variant="link">Link</Button>
+          <Button variant="outline" size="icon">
+            <ChevronRight className="h-4 w-4" />
+          </Button>
+          <Button>
+            <Mail className="mr-2 h-4 w-4" /> Login with Email
+          </Button>
+          <Button disabled>
+            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+            Please wait
+          </Button>
+          <Button asChild>
+            <Link href="/login">Login</Link>
+          </Button>
+        </div>
+      </div>
+      {/* {features.map(({ title, description, demo, large }) => (
           <Card
             key={title}
             title={title}
@@ -26,8 +48,7 @@ export default function Home() {
             demo={title === 'Beautiful, reusable components' ? <ComponentGrid /> : demo}
             large={large}
           />
-        ))}
-      </div>
+        ))} */}
     </div>
   )
 }
@@ -41,30 +62,7 @@ const chartData = [
 const features = [
   {
     title: 'Button',
-    description: 'different <Button /> variants',
-    demo: (
-      <div className="my-4 flex h-32 flex-col overflow-y-auto">
-        <Button variant="outline">Button</Button>
-        <Button variant="secondary">Secondary</Button>
-        <Button variant="destructive">Destructive</Button>
-        <Button variant="outline">Outline</Button>
-        <Button variant="ghost">Ghost</Button>
-        <Button variant="link">Link</Button>
-        <Button variant="outline" size="icon">
-          <ChevronRight className="h-4 w-4" />
-        </Button>
-        <Button>
-          <Mail className="mr-2 h-4 w-4" /> Login with Email
-        </Button>
-        <Button disabled>
-          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-          Please wait
-        </Button>
-        <Button asChild>
-          <Link href="/login">Login</Link>
-        </Button>
-      </div>
-    )
+    description: 'different <Button /> variants'
   },
   {
     title: 'Dropdown Menu',

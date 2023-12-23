@@ -1,11 +1,78 @@
 {
   "Header": {
-    "title": "Streamline your fitness journey",
-    "description": "We're revolutionizing online fitness coaching by integrating diverse digital tools into one efficient platform."
+    "fitness": {
+      "title": "Streamline your fitness journey",
+      "description": "We're revolutionizing online fitness coaching by integrating diverse digital tools into one efficient platform."
+    },
+    "wellness": {
+      "title": "Elevate Your Wellness Experience",
+      "description": "Embark on a transformative fitness journey with FitFusion, where cutting-edge technology meets personalized coaching for a healthier you."
+    },
+    "energize": {
+      "title": "Sync Your Life, Energize Your Body",
+      "description": "VitaSync is your all-in-one hub for seamless fitness integration. Unleash the power of technology and personalized guidance to achieve your health and wellness goals."
+    }
+  },
+  "LandingPage": {
+    "title": "Manage your entire community in a single system",
+    "description": "How can we help you?",
+    "plans": {
+      "title": "Plans, timeline and ideas",
+      "description": "We offer a variety of plans to suit your needs. Choose the one that's right for you."
+    },
+    "cards": {
+      "first": {
+        "title": "All in one",
+        "description": "Nutrition tracking, progress tracking, workout planning all in one place"
+      },
+      "second": {
+        "title": "Clean database",
+        "description": "We provide clean and reliable database, which can also be expandable with your own foods, recipes and meals"
+      },
+      "third": {
+        "title": "Generators",
+        "description": "Our custom made generators help you onboard clients faster by creating custom made meal plans and workouts for them"
+      },
+      "fourth": {
+        "title": "Membership Organisations",
+        "description": "Our membership management software provides full automation of membership renewals and payments"
+      },
+      "fifth": {
+        "title": "National Associations",
+        "description": "Our membership management software provides full automation of membership renewals and payments"
+      },
+      "sixth": {
+        "title": "Integration with hardware devices",
+        "description": "We provide integration with hardware devices - smart watches, bands and rings"
+      }
+    },
+    "future": {
+      "title": "The future is heltier",
+      "description": "The helti blog is the best place to read about the latest membership insights, trends and more."
+    },
+    "subscribe": "Subscribe to our newsletter & keep in touch."
+  },
+  "Footer": {
+    "Company": {
+      "aboutUs": "About us",
+      "blog": "Blog",
+      "contactUs": "Contact us",
+      "pricing": "Pricing",
+      "testimonials": "Testimonials"
+    },
+    "Support": {
+      "helpCenter": "Help center",
+      "termsOfService": "Terms of Service",
+      "legal": "Legal",
+      "privacyPolicy": "Privacy policy",
+      "status": "Status"
+    }
   },
   "Button": {
     "signUp": "Sign Up",
-    "signIn": "Sign In"
+    "signIn": "Sign In",
+    "learnMore": "Learn More",
+    "readMore": "Read More"
   },
   "IndexPage": {
     "title": "next-intl example",
@@ -28,7 +95,7 @@
   },
   "LocaleSwitcher": {
     "label": "Change language",
-    "locale": "{locale, select, de {German} en {English} other {Unknown}}"
+    "locale": "{locale, select, bg {Български} en {English} other {Unknown}}"
   },
   "Navigation": {
     "home": "Home",

@@ -16,6 +16,9 @@ module.exports = {
         "2xl": "1400px",
       },
     },
+    fontFamily: {
+      inter: ['Inter', 'sans-serif'],
+    },
     extend: {
       colors: {
         border: "hsl(var(--border))",
@@ -54,6 +57,9 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        dark: 'hsl(var(--dark))',
+        darkgray: 'hsl(var(--darkgray))',
+        gray: 'hsl(var(--gray))',
       },
       borderRadius: {
         lg: "var(--radius)",
