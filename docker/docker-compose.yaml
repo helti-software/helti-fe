@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  postgres:
+    container_name: postgres
+    image: postgres:15.4-alpine
+    healthcheck:
+      test: ["CMD", "pg_isready", "-q", "-d", "helti_server_db", "-U", "helti_server"]
+      timeout: 10s
+      interval: 10s
+      retries: 10
+    environment:
+      POSTGRES_DB: helti_server_db
+      POSTGRES_USER: helti_server
+      POSTGRES_PASSWORD: password
+      PGDATA: /var/lib/postgresql/data
+    networks:
+      - backend
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres:/var/lib/postgresql/data
+      - "$PWD/initScript/dbInit.sql:/docker-entrypoint-initdb.d/dbInit.sql"
+
+  helti-be:
+    image: deyvidpd/helti-be:latest
+    container_name: helti-be
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    networks:
+      - backend
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+networks:
+  backend:
+    driver: bridge
+
+volumes:
+  postgres:
