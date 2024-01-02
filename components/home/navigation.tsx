@@ -1,7 +1,8 @@
 import { useTranslations } from 'next-intl'
 import React, { useState } from 'react'
 import LocaleSwitcher from '../layout/LocaleSwitcher'
-import { Button } from '@/components/ui/button'
+
+import AuthButtons from '../auth/authButtons'
 
 const Navigation = () => {
   const t = useTranslations('Navigation')
@@ -44,7 +45,7 @@ const Navigation = () => {
       </ul>
       <LocaleSwitcher />
       <div className="flex flex-row items-center space-x-4">
-        <Button variant="link">{t('login')}</Button>
+        <AuthButtons />
         <span className="rounded-sm bg-primary px-4 py-2 text-white">{t('signup')}</span>
       </div>
     </div>

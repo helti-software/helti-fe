@@ -10,10 +10,12 @@ import LandingCard from '@/components/landing-page/LandingCard'
 import { MdPeopleOutline } from 'react-icons/md'
 import { TbDatabase } from 'react-icons/tb'
 import { GoOrganization } from 'react-icons/go'
-import { Button } from '@/components/ui/button'
 import PostThumbnail from '@/public/deyvidPost.jpeg'
 import Input from '@/components/inputs/Input'
 import { useState } from 'react'
+import Button from '@/components/inputs/button'
+import { fetchPost } from '@/lib/fetch'
+import config from '@/lib/config'
 
 const arrowRight = <>&#8594;</>
 
@@ -23,6 +25,7 @@ interface Post {
 
 export default function Index() {
   const [email, setEmail] = useState<string>('')
+  const [loading, setLoading] = useState<boolean>(false)
 
   const tLanding = useTranslations('LandingPage')
   const tButton = useTranslations('Button')
@@ -30,6 +33,14 @@ export default function Index() {
   const handleSubscribe = (e: any) => {
     e.preventDefault()
     // @TODO: Handle subscribe
+    try {
+      setLoading(true)
+      fetchPost(`${config.GATEWAY_URL}/email-subscribe`, email)
+    } catch (e) {
+      console.log(e);
+    } finally {
+      setLoading(false)
+    }
     setEmail('')
   }
 
@@ -132,7 +143,7 @@ export default function Index() {
         {tLanding('subscribe')}
           <form className='my-6 flex w-full max-w-sm items-center justify-center space-x-2' onSubmit={handleSubscribe}>
             <Input value={email} onChange={setEmail} type="email" placeholder="Email" />
-            <Button type="submit">
+            <Button loading={loading} onClick={handleSubscribe} type="submit">
               Subscribe
             </Button>
           </form>

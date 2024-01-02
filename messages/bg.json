@@ -120,5 +120,9 @@
     "faq": "ЧЗВ",
     "login": "Вход",
     "signup": "Регистрация"
+  },
+  "Authentication": {
+    "noAccount": "Нямате акаунт?",
+    "signUpNow": "Регистрирай се сега"
   }
 }

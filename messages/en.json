@@ -120,5 +120,9 @@
         "href": "https://github.com/amannn/next-intl/tree/main/examples/example-app-router"
       }
     }
+  },
+  "Authentication": {
+    "noAccount": "Don't have an account?",
+    "signUpNow": "Sign up now"
   }
 }
