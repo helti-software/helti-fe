@@ -45,12 +45,12 @@ const Header = () => {
       >
         {['fitness', 'wellness', 'energize']?.map((item, index) => (
           <SwiperSlide key={index}>
-            <div className="flex flex-row items-center justify-center space-x-8 pb-8">
-              <div className="w-1/3">
-                <h2 className="my-4 font-inter text-6xl font-semibold text-darkgray">
+            <div className="flex flex-col-reverse md:flex-row items-center justify-center space-x-8 pb-8">
+              <div className="w-full text-center md:text-left md:w-1/3">
+                <h2 className="my-4 font-inter text-3xl md:text-6xl font-semibold text-darkgray">
                   {t(item + '.title')}
                 </h2>
-                <p className="text-gray">{t(item + '.description')}</p>
+                <p className="text-gray text-sm md:text-md">{t(item + '.description')}</p>
               </div>
               <div className="p-6">
                 <Image src={HeaderIcon} alt="hero" width="350" height="350" />

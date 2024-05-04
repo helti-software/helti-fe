@@ -9,6 +9,8 @@ import { Suspense } from 'react'
 import Header from '@/components/layout/header'
 import { unstable_setRequestLocale } from 'next-intl/server'
 import { NextIntlClientProvider, useMessages } from 'next-intl'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
 const locales = ['en', 'bg']
 
@@ -47,9 +49,10 @@ export default function LocaleLayout({ children, params: { locale } }: any) {
             <Nav />
             <Header />
           </Suspense>
-          <main className="mx-auto flex min-h-screen w-[1200px] flex-col py-16">{children}</main>
+          <main className="mx-auto flex min-h-screen w-[95%] md:w-[1200px] flex-col py-16">{children}</main>
           <Footer />
           <Analytics />
+          <ToastContainer />
         </NextIntlClientProvider>
       </body>
     </html>

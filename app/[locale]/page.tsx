@@ -16,6 +16,8 @@ import { useState } from 'react'
 import Button from '@/components/inputs/button'
 import { fetchPost } from '@/lib/fetch'
 import config from '@/lib/config'
+import { ValidatorErrorMessage, validateEmail } from '@/lib/validators'
+import { toast } from 'react-toastify'
 
 const arrowRight = <>&#8594;</>
 
@@ -32,46 +34,64 @@ export default function Index() {
 
   const handleSubscribe = (e: any) => {
     e.preventDefault()
+    if (validateEmail(email)) {
+      toast.error(ValidatorErrorMessage.InvalidEmail)
+      return
+    }
     // @TODO: Handle subscribe
     try {
       setLoading(true)
-      fetchPost(`${config.GATEWAY_URL}/email-subscribe`, email)
+      fetchPost(`${config.GATEWAY_URL}/email-subscribe`, { email })
+      toast.success('Subscribed successfully!')
+      setEmail('')
     } catch (e) {
-      console.log(e);
+      console.log(e)
+      toast.error('Something went wrong! Please try again.')
     } finally {
       setLoading(false)
     }
-    setEmail('')
   }
 
   const cards = [
     {
-      icon: <MdPeopleOutline className="absolute bottom-0 left-0 right-0 top-0 z-30 h-12 w-12 text-primary" />,
+      icon: (
+        <MdPeopleOutline className="absolute bottom-0 left-0 right-0 top-0 z-30 h-12 w-12 text-primary" />
+      ),
       title: tLanding('cards.first.title'),
       description: tLanding('cards.first.description')
     },
     {
-      icon: <TbDatabase className="absolute bottom-0 left-0 right-0 top-0 z-30 h-12 w-12 text-primary" />,
+      icon: (
+        <TbDatabase className="absolute bottom-0 left-0 right-0 top-0 z-30 h-12 w-12 text-primary" />
+      ),
       title: tLanding('cards.second.title'),
       description: tLanding('cards.second.description')
     },
     {
-      icon: <GoOrganization className="absolute bottom-0 left-0 right-0 top-0 z-30 h-12 w-12 text-primary" />,
+      icon: (
+        <GoOrganization className="absolute bottom-0 left-0 right-0 top-0 z-30 h-12 w-12 text-primary" />
+      ),
       title: tLanding('cards.third.title'),
       description: tLanding('cards.third.description')
     },
     {
-      icon: <MdPeopleOutline className="absolute bottom-0 left-0 right-0 top-0 z-30 h-12 w-12 text-primary" />,
+      icon: (
+        <MdPeopleOutline className="absolute bottom-0 left-0 right-0 top-0 z-30 h-12 w-12 text-primary" />
+      ),
       title: tLanding('cards.fourth.title'),
       description: tLanding('cards.fourth.description')
     },
     {
-      icon: <TbDatabase className="absolute bottom-0 left-0 right-0 top-0 z-30 h-12 w-12 text-primary" />,
+      icon: (
+        <TbDatabase className="absolute bottom-0 left-0 right-0 top-0 z-30 h-12 w-12 text-primary" />
+      ),
       title: tLanding('cards.fifth.title'),
       description: tLanding('cards.fifth.description')
     },
     {
-      icon: <GoOrganization className="absolute bottom-0 left-0 right-0 top-0 z-30 h-12 w-12 text-primary" />,
+      icon: (
+        <GoOrganization className="absolute bottom-0 left-0 right-0 top-0 z-30 h-12 w-12 text-primary" />
+      ),
       title: tLanding('cards.sixth.title'),
       description: tLanding('cards.sixth.description')
     }
@@ -105,12 +125,12 @@ export default function Index() {
         ))}
       </div>
 
-      <div className="flex flex-row items-center">
+      <div className="flex flex-col md:flex-row items-center">
         <Image src={PlansImage} alt="Plans" />
-        <div className="flex flex-col space-y-4 p-4 text-left">
+        <div className="flex flex-col space-y-4 p-4 text-center md:text-left">
           <h3 className="text-4xl font-semibold text-darkgray">{tLanding('plans.title')}</h3>
           <p className="text-gray">{tLanding('plans.description')}</p>
-          <Button size="lg" className="inline w-fit">
+          <Button size="lg" className="inline w-fit mx-auto md:mx-0">
             {tButton('learnMore')}
           </Button>
         </div>
@@ -119,7 +139,7 @@ export default function Index() {
       <div className="flex w-full flex-col items-center">
         <h2 className="my-4 text-4xl font-semibold text-darkgray">{tLanding('future.title')}</h2>
         <p className="text-gray">{tLanding('future.description')}</p>
-        <div className="my-4 grid w-full grid-cols-3">
+        <div className="my-4 grid w-full grid-cols-1 md:grid-cols-3">
           {hardcodedPosts.map((post, index) => (
             <div
               key={index}
@@ -141,12 +161,15 @@ export default function Index() {
 
       <div className="flex flex-col items-center text-4xl font-semibold text-dark">
         {tLanding('subscribe')}
-          <form className='my-6 flex w-full max-w-sm items-center justify-center space-x-2' onSubmit={handleSubscribe}>
-            <Input value={email} onChange={setEmail} type="email" placeholder="Email" />
-            <Button loading={loading} onClick={handleSubscribe} type="submit">
-              Subscribe
-            </Button>
-          </form>
+        <form
+          className="my-6 flex w-full max-w-sm items-center justify-center space-x-2"
+          onSubmit={handleSubscribe}
+        >
+          <Input value={email} onChange={setEmail} type="email" placeholder="Email" />
+          <Button loading={loading} onClick={handleSubscribe} type="submit">
+            Subscribe
+          </Button>
+        </form>
       </div>
     </div>
   )

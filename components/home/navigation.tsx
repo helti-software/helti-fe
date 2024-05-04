@@ -36,7 +36,7 @@ const Navigation = () => {
 
   return (
     <div className="flex flex-grow flex-row items-center justify-end space-x-8">
-      <ul className="inline">
+      <ul className="hidden md:inline">
         {navLinks?.map((link, index) => (
           <button className="header-nav-button active mx-2 p-2" onClick={link.onClick} key={index}>
             <span>{link.label}</span>
@@ -44,10 +44,11 @@ const Navigation = () => {
         ))}
       </ul>
       <LocaleSwitcher />
-      <div className="flex flex-row items-center space-x-4">
+      {/* @TODO: Uncomment when project ready */}
+      {/* <div className="flex flex-row items-center space-x-4">
         <AuthButtons />
         <span className="rounded-sm bg-primary px-4 py-2 text-white">{t('signup')}</span>
-      </div>
+      </div> */}
     </div>
   )
 }

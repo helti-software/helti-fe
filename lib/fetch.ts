@@ -35,13 +35,17 @@ export const fetchPost = async <JSON = any>(
     input,
     Object.assign({ method: 'POST' }, await formatPayload(payload, isFile))
   )
-  const data = await res.json()
 
   if (!res.ok) {
     throw new Error(data.error || `An error occurred while pushing data for ${input}.`)
   }
 
-  return data
+  const contentType = res.headers.get('content-type')
+  if (contentType && contentType.includes('application/json')) {
+    return res.json()
+  } else {
+    return
+  }
 }
 
 export async function fetchPut<JSON = any>(

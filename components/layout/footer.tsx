@@ -15,6 +15,7 @@ interface FooterSocials {
 
 export default function Footer() {
   const t = useTranslations('Footer')
+  const year = new Date().getFullYear()
 
   const companyNavigation: FooterNavigation[] = [
     {
@@ -79,20 +80,21 @@ export default function Footer() {
 
   return (
     <div className="flex w-full flex-row items-center justify-between bg-secondary p-6">
-      <div className="mx-auto flex w-[1200px] flex-row items-center justify-between">
-        <div className="flex flex-col space-y-4">
+      <div className="mx-auto flex w-[90%] flex-row items-center justify-between md:w-[1200px]">
+        <div className="flex w-full flex-col items-center space-y-4 md:w-fit md:items-start">
           <Image src={HeltiWhiteLogo} alt="Helti Logo" height={30} width={30} />
-          <div className="flex flex-col space-y-1">
-            <p className="text-sm font-light text-white">Copyright © 2023 Helti ltd.</p>
-            <p className="text-sm font-light text-white">All rights reserved</p>
-          </div>
           <div className="flex-items flex flex-row space-x-2">
             {socials.map((item, index) => (
               <SocialLink social={index} profileName={item.profileName} key={index} />
             ))}
           </div>
+          <div className="flex w-full flex-col space-y-1">
+            <p className="text-center text-sm font-light text-white md:text-left">
+              Copyright © {year} Helti ltd. All rights reserved
+            </p>
+          </div>
         </div>
-        <div className="flex flex-row space-x-4">
+        <div className=" hidden flex-row space-x-4 md:flex">
           <div className="flex flex-col">
             <span className="my-2 text-white">Company</span>
             {companyNavigation.map((item, index) => (
